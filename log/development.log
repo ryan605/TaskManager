@@ -1,0 +1,7 @@
+Started GET "/" for ::1 at 2023-03-22 10:33:00 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.7.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.1ms | Allocations: 774)
+Completed 200 OK in 19ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 6659)
+
+
