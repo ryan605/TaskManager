@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
     include ActionController::Cookies
 
+    rescue_from StandardError, with: :standard_error
+
     def app_response(message: 'success', status: 200, data: nil)
         render json: {
             message: message,
@@ -28,10 +30,15 @@ class ApplicationController < ActionController::API
             app_response(message: 'failed', status: 401, data: { info: 'Your session has expired. Please login again to continue' })
         end
     end
-    #get logged in user id
 
+    # get logged in user
     def user
-        User.find_by(session[:uid].to_i)
+        User.find(session[:uid].to_i) 
+    end
+
+    # rescue all common errors
+    def standard_error(exception)
+        app_response(message: 'failed', data: { info: exception.message }, status: :unprocessable_entity)
     end
 
 end

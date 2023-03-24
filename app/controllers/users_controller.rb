@@ -1,3 +1,5 @@
+
+
 class UsersController < ApplicationController
 
     before_action :session_expired?, only: [:check_login_status]
@@ -5,7 +7,7 @@ class UsersController < ApplicationController
     def register
         user = User.create(user_params)
         if user.valid?
-            save_user(id = user.id)
+            save_user(user.id)
             app_response(message: 'Registration was successful', status: :created, data: user)
         else
             app_response(message: 'Something went wrong during registration', status: :unprocessable_entity, data: user.errors)
@@ -39,4 +41,3 @@ class UsersController < ApplicationController
     end
 
 end
-
